@@ -19,7 +19,8 @@ service:
 
 ingress:
   enabled: false
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -34,7 +35,7 @@ ingress:
 securityContext:
   capabilities:
     drop:
-    - ALL
+      - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
@@ -91,3 +92,9 @@ baseUrl: ""
 jwksUrl: "http://oathkeeper-api"
 
 projectName: "SecureApp"
+
+# If you want to also use hydra and connect an app via OAuth2, set these:
+# Should point to hydra's admin port including scheme (e.g. https://hydra.example.com:445)
+hydraAdminUrl: ""
+#  (optional) This secret is used to encrypt cookies which are used as part of the ORY Hydra integration.
+hydraCookieSecret: ""
